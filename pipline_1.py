@@ -9,7 +9,11 @@ import pandas as pd
 #                      Config
 ################################################################
 # enter your qianwen api key here
+<<<<<<< HEAD
 qianwen_key = ""
+=======
+qianwen_key = "sk-aa1a35a2d0454a8b8ed7e183633f2989"
+>>>>>>> 73f828e7695e3b45e7f43fa04cba1cbd35952c28
 #  base 64 编码格式
 def encode_image(image_path):
   with open(image_path, "rb") as image_file:
