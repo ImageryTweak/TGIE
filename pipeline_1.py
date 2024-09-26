@@ -3,27 +3,25 @@ import base64
 import requests
 import sys
 import pandas as pd
-
+import torch
 
 ################################################################
 #                      Config
 ################################################################
 # enter your qianwen api key here
-<<<<<<< HEAD
 qianwen_key = ""
-=======
-qianwen_key = "sk-aa1a35a2d0454a8b8ed7e183633f2989"
->>>>>>> 73f828e7695e3b45e7f43fa04cba1cbd35952c28
+
 #  base 64 编码格式
 def encode_image(image_path):
   with open(image_path, "rb") as image_file:
     return base64.b64encode(image_file.read()).decode('utf-8')
 # define image_path and prompt
-total_image_path = 'data/challenge_dataset/'
-img_mask_path = 'data/challenge_dataset/mask'
+total_image_path = './data/challenge_dataset'
+img_mask_path = './data/challenge_dataset/mask/'
 prompt_file = pd.read_csv(total_image_path + '/translate_sheet1.csv')
 image_names = list(prompt_file['instruction_target_image'].str[22:])
 prompt_ch = list(prompt_file['translate'])
+torch.cuda.set_device(4)
 
 
 ################################################################
@@ -114,27 +112,27 @@ def get_response_object(image_path, editing_prompt, qianwen_key):
     return response_str
 
 
-categories = []
-edit_objects = []
-for image_path_i in range(len(image_names)):
-    image_path = total_image_path + image_names[image_path_i]
-    editing_prompt = prompt_ch[image_path_i]
-    re_category = get_response_type(image_path,editing_prompt,qianwen_key)
-    # print(f"image path: {image_path}")
-    print(f"editing prompt: {editing_prompt}")
-    for category_name in ["Addition","Remove","Local","Global","Background"]:
-        if category_name in re_category:
-            categories.append(category_name)
-            break
-    category = categories[image_path_i]
-    print(f"category: {category}")
-    if category in ["Background", "Global", "Addition"]:
-        edit_objects.append("nan")
-        print(f"object: {edit_objects[image_path_i]}")
-        continue
-    res_obj = get_response_object(image_path,editing_prompt,qianwen_key)
-    edit_objects.append(res_obj)
-    print(f"object: {edit_objects[image_path_i]}")
+# categories = []
+# edit_objects = []
+# for image_path_i in range(len(image_names)):
+#     image_path = total_image_path + image_names[image_path_i]
+#     editing_prompt = prompt_ch[image_path_i]
+#     re_category = get_response_type(image_path,editing_prompt,qianwen_key)
+#     # print(f"image path: {image_path}")
+#     print(f"editing prompt: {editing_prompt}")
+#     for category_name in ["Addition","Remove","Local","Global","Background"]:
+#         if category_name in re_category:
+#             categories.append(category_name)
+#             break
+#     category = categories[image_path_i]
+#     print(f"category: {category}")
+#     if category in ["Background", "Global", "Addition"]:
+#         edit_objects.append("nan")
+#         print(f"object: {edit_objects[image_path_i]}")
+#         continue
+#     res_obj = get_response_object(image_path,editing_prompt,qianwen_key)
+#     edit_objects.append(res_obj)
+#     print(f"object: {edit_objects[image_path_i]}")
 
 
 
@@ -147,20 +145,17 @@ import numpy as np
 from third_party.GSAM.app import run_grounded_sam
 from transformers import AutoModelForImageSegmentation
 from torchvision import transforms
-import torch
 
-with open('object_ch2en.txt', 'r',encoding='utf-8') as file:
+with open('object_align.txt', 'r',encoding='utf-8') as file:
     text1 = file.read()
 # 根据 'image path' 进行分割
 object_ch = text1.split('\n')
 
-with open('category.txt', 'r',encoding='utf-8') as file:
-    text3 = file.read()
-# 根据 'image path' 进行分割
-category_ch = text3.split('\n')
 
+category_ch = list(prompt_file['category'])
 
-birefnet = AutoModelForImageSegmentation.from_pretrained('/home2/lsy/HunyuanDiT_No.3/BiRefNet', trust_remote_code=True)
+# you can download the pretrained BiRefNet here:https://huggingface.co/ZhengPeng7/BiRefNet/tree/main
+birefnet = AutoModelForImageSegmentation.from_pretrained("./third_party/BiRefNet", trust_remote_code=True)
 torch.set_float32_matmul_precision(['high', 'highest'][0])
 birefnet.to('cuda')
 birefnet.eval()
@@ -183,13 +178,15 @@ def extract_object(birefnet, imagepath):
     pred_pil = transforms.ToPILImage()(pred)
     mask = pred_pil.resize(image.size)
     image.putalpha(mask)
-    return image, mask
+    return mask
 
 
 
 masks = []
 for image_path_i in range(len(image_names)):
-    image_path = image_names[image_path_i]
+    device = torch.cuda.current_device()
+    print(f"当前使用的 GPU 编号: {device}")
+    image_path = total_image_path+'/image_edit_magic_data/'+image_names[image_path_i]
     editing_prompt = prompt_ch[image_path_i]
     category = category_ch[image_path_i]
     edit_object = object_ch[image_path_i]
@@ -202,7 +199,7 @@ for image_path_i in range(len(image_names)):
                 "Authorization": f"Bearer {qianwen_key}"
             }
             payload = {
-                "model": "qwen-vl-plus",
+                "model": "qwen-vl-max",
                 "messages": [
                     {
                         "role": "user",
@@ -226,18 +223,17 @@ for image_path_i in range(len(image_names)):
             }
 
             response = requests.post("https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions", headers=headers, json=payload)
-
+            print('response', response)
             response_str = response.json()["choices"][0]["message"]["content"]
 
             try:
                 box = response_str[1:-1].split(",")
                 for i in range(len(box)):
                     box[i] = int(box[i])
-
                 cus_mask = np.zeros((640, 640))
                 cus_mask[box[1]:box[1] + box[3], box[0]:box[0] + box[2]] = 255
-
-                masks.append(cus_mask)
+                mask_img = Image.fromarray(cus_mask.astype(np.uint8))
+                mask_img.save(img_mask_path + image_names[image_path_i])
                 print(f"image path: {image_path}")
                 print(f"editing prompt: {editing_prompt}")
                 print(f"category: {category}")
@@ -247,13 +243,18 @@ for image_path_i in range(len(image_names)):
                 continue
         continue
     elif category == "Background":
-        _, mask_c = extract_object(birefnet, imagepath=image_path)
-        masks.append(mask_c)
+        mask_c = extract_object(birefnet, imagepath=image_path)
+        mask_c.save(img_mask_path + image_names[image_path_i])
+        print(f"image path: {image_path}")
+        print(f"editing prompt: {editing_prompt}")
+        print(f"category: {category}")
+        continue
     elif category == "Global":
-        masks.append(255 * np.ones((640, 640)))
-        # print(f"image path: {image_path}")
-        # print(f"editing prompt: {editing_prompt}")
-        # print(f"category: {category}")
+        mask_img = Image.fromarray((255 * np.ones((640, 640))).astype(np.uint8))
+        mask_img.save(img_mask_path + image_names[image_path_i])
+        print(f"image path: {image_path}")
+        print(f"editing prompt: {editing_prompt}")
+        print(f"category: {category}")
         continue
     else:
         labels = edit_object
@@ -271,7 +272,8 @@ for image_path_i in range(len(image_names)):
                 inpaint_mode="merge",
                 scribble_mode="split"
             )
-            masks.append(np.array(detections[0, 0, ...].cpu()) * 255)
+            mask_img = Image.fromarray((np.array(detections[0, 0, ...].cpu()) * 255).astype(np.uint8))
+            mask_img.save(img_mask_path + image_names[image_path_i])
             print(f"image path: {image_path}")
             print(f"editing prompt: {editing_prompt}")
             print(f"category: {category}")
@@ -280,15 +282,3 @@ for image_path_i in range(len(image_names)):
             print(f"wrong in threshhold: {thresh}")
 
 
-for image_path_i in range(len(image_names)):
-    image_path = image_names[image_path_i]
-    editing_prompt = prompt_ch[image_path_i]
-    category = category_ch[image_path_i]
-    edit_object = object_ch[image_path_i]
-    mask = masks[image_path_i]
-    print(f"image path: {image_path}")
-    print(f"editing prompt: {editing_prompt}")
-    print(f"category: {category}")
-    print(f"edit object: {edit_object}")
-    mask_img = Image.fromarray(mask.astype(np.uint8))
-    mask_img.save(img_mask_path+image_path)

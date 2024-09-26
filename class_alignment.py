@@ -6,7 +6,8 @@ import json
 import numpy as np
 import csv
 
-device = "cuda" if torch.cuda.is_available() else "cpu"
+
+device = "cuda:4" if torch.cuda.is_available() else "cpu"
 model, preprocess = clip.load("ViT-L/14@336px", device=device)
 
 def combine_class(class_name):
@@ -18,6 +19,7 @@ def combine_class(class_name):
         for j in range(len(current_class_dict)):
             current_class_name=current_class_dict[j]['class'].lower()
             if current_class_name not in all_class_dict:
+
                 all_class_dict[current_class_name]=str()
             else:
                 print(current_class_name)
@@ -54,17 +56,21 @@ def process_similarity(object_list, embedding_csv_path, top_n=5):
     result_list = []
 
     for i in tqdm(range(len(object_list))):
-        text = clip.tokenize(object_list[i]).to(device)  # 将文本编码为 tensor
-        with torch.no_grad():
-            text_features = model.encode_text(text).cpu().numpy().tolist()[0]
-            print(text_features)
-            result = recall(text_features, df)
-            result_list.append(result)
+        if object_list[i].lower() == 'nan':
+            result_list.append('nan')
+        else:
+            text = clip.tokenize(object_list[i]).to(device)  # 将文本编码为 tensor
+            with torch.no_grad():
+                text_features = model.encode_text(text).cpu().numpy().tolist()[0]
+                # print(text_features)
+                result = recall(object_list[i], text_features, df)
+                result_list.append(result)
+                print('result_list',result_list)
     return result_list
 
 
 
-def recall(embedding, df, top_n=5):
+def recall(object, embedding, df, top_n=3):
     # 计算余弦相似度
     similarity_scores = []
     for index, row in df.iterrows():
@@ -75,11 +81,12 @@ def recall(embedding, df, top_n=5):
         else:
             similarity = np.dot(embedding, emb) / (np.linalg.norm(embedding) * np.linalg.norm(emb))
 
-        similarity_scores.append((row, similarity))
-
+        similarity_scores.append((row['class'], similarity))
     # 按照相似度排序，并取前 N 个结果
     similarity_scores.sort(key=lambda x: x[1], reverse=True)
-    return [item[0] for item in similarity_scores[:top_n]]
+    aligned_object = [item[0] for item in similarity_scores[:top_n]][0]
+    print('Origin: ', object, ' Aligned: ', aligned_object, ' Score: ', similarity_scores[0][1])
+    return aligned_object if similarity_scores[0][1] > 0.75 else object.lower()
 
 
 if __name__ == '__main__':
