@@ -1,0 +1,153 @@
+/home/workspace/yuanyunhu/miniconda3/envs/HunyuanDiT/lib/python3.8/site-packages/huggingface_hub/file_download.py:1142: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:03,  1.09s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.13s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:03<00:01,  1.15s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.14it/s]
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:2 for open-end generation.
+image_path_i为 5
+editing_prompt为 让今天阳光明媚。
+<画图>一位女士站在木制码头上，手里握着红色的雨伞，迎着阳光，背景是平静的湖水和远处的山脉，镜头是全景，风格是油画风格。
+image_path_i为 6
+editing_prompt为 请给它一个温暖明媚的一天。
+<画图>温暖明媚的一天，阳光洒在平静的海面上，海浪轻轻拍打在沙滩上，背景是蓝天白云，镜头是全景，风格是浪漫风格。
+image_path_i为 13
+editing_prompt为 更未来的
+<画图>画面中的小女孩在吃甜甜圈，她的身体发出神秘的光芒，周围有pinkfloatingballs，背景是一座未来主义的城市，整个画面的风格是充满未来感的动画风格。
+image_path_i为 18
+editing_prompt为 转换到未来的赛博朋克设置
+<画图>一位年轻的女孩坐在楼梯上，穿着未来赛博朋克风格的服装，她的眼睛被黑色的墨镜遮挡，背景是充满霓虹灯的城市夜晚，全景镜头，风格是赛博朋克风格。
+image_path_i为 21
+editing_prompt为 将其变成万圣节主题
+<画图>一只穿着万圣节主题的黑色拉布拉多犬正在咀嚼一根骨头，背景是蓝色的天空和绿色的草地，镜头是中景，风格是卡通风格。
+image_path_i为 22
+editing_prompt为 变成一幅画
+<画图>在夕阳下，一只棕色的狗坐在岩石上，远处是山峰和森林，镜头是近景，风格是写实风。
+image_path_i为 26
+editing_prompt为 变成夕阳
+<画图>一位女子站在蓝色气球的下面，头上也挂着蓝色气球，她看起来很沉思，背景是夕阳下的天空，镜头是全景，风格是超现实主义。
+image_path_i为 41
+editing_prompt为 变成一幅画
+<画图>一对年轻的情侣在树林中相拥，男士穿着蓝色西装，女士穿着米色长裙，背景是树林中的一棵大树，中景构图，半身，呈现出浪漫的氛围，同时蕴含着超现实主义风格。
+image_path_i为 50
+editing_prompt为 请把它制成彩色照片。
+<画图>一个女孩正在对着梳妆镜凝视自己，背景是暗色的房间，镜头是中景，风格是摄影风格。
+image_path_i为 54
+editing_prompt为 请将其变得更具有未来感。
+<画图>一位南亚女性身着富丽的未来风格服饰，翠绿色的服饰有科技元素的设计，背景是现代化的高科技城市，镜头是全身，风格是现实主义风格。
+image_path_i为 61
+editing_prompt为 让城市看起来充满未来感
+<画图>一位戴着花环的女孩出现在这个画面中，背景是充满未来感的摩天大楼和繁忙的城市街道，镜头是中景，风格是现代风格。
+image_path_i为 67
+editing_prompt为 让我们以未来主义的风格来看待它。
+<画图>一条流淌着蓝色的小溪穿越带有各种色彩的五彩树林，背景是蔚蓝的天空，镜头是远景，风格是未来主义风格。
+image_path_i为 77
+editing_prompt为 请将其描绘为一位女性的肖像。
+<画图>一幅油画风格的作品，描绘了一位女性士兵，她戴着一顶士兵帽，深蓝色的眼睛显得十分犀利，背景是抽象的色彩混合，镜头是特写，风格是印象派。
+image_path_i为 80
+editing_prompt为 设定在一个反乌托邦的未来场景中
+<画图>一位青年戴着口罩站在拥挤的城市街道上，他的脸上带着微笑。背景是高楼大厦和川流不息的人群，镜头是全景，风格是反乌托邦风格。
+image_path_i为 92
+editing_prompt为 请把它变成夕阳。
+<画图>群马在海滩上奔跑，背景是夕阳下的海滩，镜头是全景，风格是摄影风格。
+image_path_i为 98
+editing_prompt为 变成一幅画
+<画图>一个年轻女性身着牛仔装束，戴着牛仔帽，站在一个白色的horse笼子前，她正在向我们微笑，整个场景是在一个马场背景下，光线良好，照片采用全景构图方式，全身，呈现的是写实的西部文化，并且展现了一种欢快的氛围。
+image_path_i为 102
+editing_prompt为 把它做成足球场
+<画图>一对男女正在足球场里互相拥抱，他们看起来非常幸福，背景是繁忙的足球场，镜头是特写，风格是摄影风格。
+image_path_i为 104
+editing_prompt为 将...转变成水彩画
+<画图>一位年轻的女子满脸粉红，眼睛蓝得像海洋，头上堆着五彩斑斓的水彩画，背景是灰色的。镜头是特写，风格是超现实主义。
+image_path_i为 197
+editing_prompt为 将蓝色改为红色
+<画图>一件红色衬衫，搭配深色牛仔裤，潮人风格，背景是装饰华丽的酒店大厅，镜头是腰部镜头，画风是现实主义。
+image_path_i为 318
+editing_prompt为 让他们看起来像是来自1920年代
+<画图>一对恋人紧密相拥en,他ir在充满浪漫气氛的城市景观中。他们穿着1920年代的服装，拥有时代独特的发型。背景是充满了活力和乐观的城市风光，镜头是中景，风格是1920年代的印象派风格。
+image_path_i为 321
+editing_prompt为 将雪替换为樱花
+<画图>一座小镇被樱花树环绕，樱花树枝头挂满了粉色的樱花，背景是这个小镇，镜头是全景，风格是浪漫风格。
+image_path_i为 533
+editing_prompt为 创建一个冬季仙境场景
+<画图>一个木屋坐落在雪地中，烟囱冒着烟，窗户透出暖黄的灯光，周围是覆盖着厚厚雪的松树，背景是冬季的夜晚，镜头是全景，风格是冬季仙境风格。
+image_path_i为 562
+editing_prompt为 让我们在未来的设定中看看它。
+<画图>一位年轻的女孩坐在未来风格的沙发上，漂亮的蓝色眼睛熠熠生辉，金色的长发飘逸，身穿粉色T恤，背景是充满现代感的未来城市，镜头是中景，风格是未来风格。
+image_path_i为 679
+editing_prompt为 去掉雨水
+<画图>一群孩子在雨中玩耍，每个人都撑着雨伞，背景是一个乡村小道，镜头是全景，风格是摄影风格。
+image_path_i为 747
+editing_prompt为 把稻田变成海滩
+<画图>一对男女正在海滩上挥手问合影，背景是广阔的海滩和蔚蓝的海水，镜头是中景，风格是摄影风格。
+image_path_i为 753
+editing_prompt为 让他们看起来像是来自1920年代。
+<画图>三位年轻女性穿着1920年代的时尚，拍一张合影，背景是一堵老旧的墙，镜头是全身镜头，风格是复古风格。
+image_path_i为 775
+editing_prompt为 将照片彩色化
+<画图>一位年轻男子喝着烟，身穿灰色上衣，其脸上刺眼的眼镜和胡子引人注目，他周围环绕着烟雾，背后的景色含蓄且神秘，构图方式是近景，半身，散点式构图，创造出一种冷漠的氛围，尽显现代男子的品味。
+image_path_i为 806
+editing_prompt为 去除烟雾和焦外成像
+<画图>一位棕发的美女正在孕妇的姿态中伫立，背景简洁而明亮，镜头是腰上视角，风格是摄影风格。
+image_path_i为 833
+editing_prompt为 用亮片覆盖图片
+<画图>一幅光线充足的室内照片，四个人正在画室里进行画画活动，背景是充满艺术品的画室，镜头是全景，风格是摄影风格。
+image_path_i为 957
+editing_prompt为 给照片上色
+<画图>一位目光坚定的男子，脸上有着络腮胡子，双臂交叉于胸前，背景为一间繁忙的酒吧，整体照片以黑白风格呈现，中景构图，半身，蕴含了男子的魅力氛围。
